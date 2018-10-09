@@ -18,6 +18,7 @@ export class MM {
                 baseUrl: null,
                 listUrl: null,
                 downloadUrl: null,
+                deleteUrl: null,
                 uploadUrl: null,
                 options: {}
             },

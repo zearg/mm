@@ -41,6 +41,7 @@
                     <button v-on:click.prevent="onClose" class="btn btn-default btn-sm" role="button"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
                     <template v-if="file.type!='dir'">
                         <a v-if="$api.downloadUrl(file)" v-bind:href="$api.downloadUrl(file)" class="btn btn-primary btn-sm" role="button"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                        <a v-on:click.prevent="$api.deleteUrl(file)" href="#" class="btn btn-primary btn-sm" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
                         <button v-if="mmc.isSelected(file)" v-on:click.prevent="onUnselect"class="btn btn-primary btn-sm" role="button"><i class="fa fa-times" aria-hidden="true"></i> Unselect</button>
                         <button v-else v-on:click.prevent="onSelect"class="btn btn-primary btn-sm" role="button"><i class="fa fa-check" aria-hidden="true"></i> Select</button>
                     </template>

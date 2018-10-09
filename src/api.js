@@ -7,6 +7,7 @@ export default class Api {
             baseUrl: null,
             listUrl: null,
             downloadUrl: null,
+            deleteUrl: null,
             uploadUrl: null,
             axiosOptions: {}
         };
@@ -28,6 +29,11 @@ export default class Api {
 
     upload(data, config) {
         return this.axios.post(this.options.uploadUrl, data, config);
+    }
+
+    deleteUrl(path) {
+        console.log('test')
+        return this.axios.get(this.options.deleteUrl, { params: { path: this.path } });
     }
 
     downloadUrl(file) {
