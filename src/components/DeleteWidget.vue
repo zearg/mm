@@ -1,16 +1,16 @@
 <template>
 
-    <div class="details-widget panel-modal">
+    <div class="delete-widget panel-modal">
         <div class="panel panel-default">
 
             <div class="panel-heading">
-                Détail du fichier
+                Supprimer le fichier ?
                 <button v-on:click="onClose" type="button" class="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
-            <div class="details-widget-content panel-body">
+            <div class="delete-widget-content panel-body">
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
@@ -38,12 +38,9 @@
                     </tbody>
                 </table>
                 <p class="buttons">
-                    <button v-on:click.prevent="onClose" class="btn btn-primary btn-sm" role="button"><i class="fa fa-times" aria-hidden="true"></i> Fermer</button>
                     <template v-if="file.type!='dir'">
-                        <a v-if="$api.downloadUrl(file)" v-bind:href="$api.downloadUrl(file)" class="btn btn-primary btn-sm" role="button"><i class="fa fa-download" aria-hidden="true"></i> Télécharger</a>
-                        <a v-on:click.prevent="mmc.toggleDeleteOn(file)" href="#" class="btn btn-primary btn-sm" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a>
-                        <button v-if="mmc.isSelected(file)" v-on:click.prevent="onUnselect"class="btn btn-primary btn-sm" role="button"><i class="fa fa-times" aria-hidden="true"></i> Déselectionner</button>
-                        <button v-else v-on:click.prevent="onSelect"class="btn btn-primary btn-sm" role="button"><i class="fa fa-check" aria-hidden="true"></i> Séléctionner</button>
+                        <button v-on:click.prevent="mmc.deleteFile(file)" class="btn btn-primary btn-sm" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Oui</button>
+                        <button v-on:click.prevent="mmc.toggleDeleteOff(file)" class="btn btn-primary btn-sm" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Non</button>
                     </template>
                 </p>
             </div>
@@ -67,23 +64,15 @@ export default {
         }
     },
     methods: {
-        onSelect() {
-            this.mmc.selectFile(this.file);
-            this.mmc.toggleDetailsOff();
-        },
-        onUnselect() {
-            this.mmc.unselectFile(this.file);
-            this.mmc.toggleDetailsOff();
-        },
         onClose() {
-            this.mmc.toggleDetailsOff();
+            this.mmc.toggleDeleteOff();
         }
     }
 };
 </script>
 
 <style lang="scss">
-.details-widget-content {
+.delete-widget-content {
     .thumb {
         max-height: 100px;
     }

@@ -12,6 +12,15 @@
         </transition>
 
         <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+            <delete-widget
+                v-if="showDelete"
+                v-bind:file="file"
+                ref="delete"
+                key="delete"
+            ></delete-widget>
+        </transition>
+
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
             <upload-status-widget
                 v-if="showUploadStatus"
                 v-bind:uploads="uploads"
@@ -79,6 +88,7 @@ import UploadWidget from './UploadWidget.vue';
 import UploadStatusWidget from './UploadStatusWidget.vue';
 import MediasWidget from './MediasWidget.vue';
 import DetailsWidget from './DetailsWidget.vue';
+import DeleteWidget from './DeleteWidget.vue';
 import NotificationWidget from './NotificationWidget.vue';
 
 export default {
@@ -87,6 +97,7 @@ export default {
         UploadWidget,
         UploadStatusWidget,
         DetailsWidget,
+        DeleteWidget,
         NotificationWidget
     },
     data() {
@@ -97,7 +108,8 @@ export default {
             showUpload: true,
             showUploadStatus: false,
             showMedias: true,
-            showDetails: false
+            showDetails: false,
+            showDelete: false
         };
     },
     computed: {
@@ -133,6 +145,11 @@ export default {
             this.hideUploadStatus();
             this.$refs.medias.refresh();
         },
+        onDeleteSuccess() {
+            this.showDelete = false;
+            this.file = {};
+            this.$refs.medias.refresh();
+        },
         onUploadError(errors) {
             this.hideUploadStatus();
             this.$refs.medias.refresh();
@@ -141,6 +158,22 @@ export default {
         onDetailsClose() {
             this.showDetails = false;
             this.file = {};
+        },
+
+        deleteFile(file){
+            this.$api.deleteUrl(file)
+            .then(response => {
+                if(response.data.ID === file.id){
+                    this.onDeleteSuccess()
+                }
+            })
+            .catch(function (error) {
+                // handle error first
+
+                throw error;
+            });
+            // if(this.$api.deleteUrl(file) === true){
+            // }
         },
 
         selectFile(file) {
@@ -179,6 +212,16 @@ export default {
         toggleDetailsOff() {
             this.file = {};
             this.showDetails = false;
+        },
+
+        toggleDeleteOn(file) {
+            this.file = file;
+            this.showDetails = false;
+            this.showDelete = true;
+        },
+        toggleDeleteOff() {
+            this.file = {};
+            this.showDelete = false;
         },
 
         /**

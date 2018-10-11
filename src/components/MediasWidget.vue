@@ -53,15 +53,15 @@
             <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
                 <div v-if="showContextMenu" class="context-menu" v-bind:style="contextMenuStyle">
                     <ul v-if="contextMenuFile.type=='dir'">
-                        <li><a v-on:click.prevent="onMediaClick(contextMenuFile)" href="#"><i class="fa fa-fw fa-folder-open"></i> Open</a></li>
-                        <li><a v-on:click.prevent="mmc.toggleDetailsOn(contextMenuFile)" href="#"><i class="fa fa-fw fa-info-circle"></i> Details</a></li>
+                        <li><a v-on:click.prevent="onMediaClick(contextMenuFile)" href="#"><i class="fa fa-fw fa-folder-open"></i> Ouvrir</a></li>
+                        <li><a v-on:click.prevent="mmc.toggleDetailsOn(contextMenuFile)" href="#"><i class="fa fa-fw fa-info-circle"></i> Détails</a></li>
                     </ul>
                     <ul v-else>
-                        <li v-if="mmc.isSelected(contextMenuFile)"><a v-on:click.prevent="mmc.unselectFile(contextMenuFile)" href="#"><i class="fa fa-fw fa-times"></i> Unselect</a></li>
-                        <li v-else><a v-on:click.prevent="mmc.selectFile(contextMenuFile)" href="#"><i class="fa fa-fw fa-check"></i> Select</a></li>
-                        <li><a v-on:click.prevent="mmc.toggleDetailsOn(contextMenuFile)" href="#"><i class="fa fa-fw fa-info-circle"></i> Details</a></li>
-                        <li><a v-bind:href="$api.downloadUrl(contextMenuFile)"><i class="fa fa-fw fa-download"></i> Download</a></li>
-                        <li><a v-on:click.prevent="$api.deleteUrl(contextMenuFile)" href="#"><i class="fa fa-fw fa-trash"></i> Delete</a></li>
+                        <li v-if="mmc.isSelected(contextMenuFile)"><a v-on:click.prevent="mmc.unselectFile(contextMenuFile)" href="#"><i class="fa fa-fw fa-times"></i> Déselectionner</a></li>
+                        <li v-else><a v-on:click.prevent="mmc.selectFile(contextMenuFile)" href="#"><i class="fa fa-fw fa-check"></i> Séléctionner</a></li>
+                        <li><a v-on:click.prevent="mmc.toggleDetailsOn(contextMenuFile)" href="#"><i class="fa fa-fw fa-info-circle"></i> Détails</a></li>
+                        <li><a v-bind:href="$api.downloadUrl(contextMenuFile)"><i class="fa fa-fw fa-download"></i> Télécharger</a></li>
+                        <li><a v-on:click.prevent="mmc.toggleDeleteOn(contextMenuFile)" href="#"><i class="fa fa-fw fa-trash"></i> Supprimer</a></li>
                     </ul>
                 </div>
             </transition>

@@ -31,9 +31,8 @@ export default class Api {
         return this.axios.post(this.options.uploadUrl, data, config);
     }
 
-    deleteUrl(path) {
-        console.log('test')
-        return this.axios.get(this.options.deleteUrl, { params: { path: this.path } });
+    deleteUrl(file) {
+        return this.axios.get(this.options.deleteUrl, { params: { id: file.id } });
     }
 
     downloadUrl(file) {
