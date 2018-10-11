@@ -73,7 +73,7 @@ $fileBorderColorH: #333;
     cursor: pointer;
     border: $fileBorderWidth solid $fileBorderColor;
     transition: border-color 0.4s;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 .file-preview {
@@ -139,8 +139,13 @@ $fileBorderColorH: #333;
 .file.selected {
     border-color: $fileBorderColorH;
     .file-title {
+        bottom: inherit;
+        height: auto;
+        margin-left: -2px;
+        margin-right: -2px;
         background-color: $fileBorderColorH;
         h3 {
+            word-wrap: break-word;
             color: #fff;
         }
     }
