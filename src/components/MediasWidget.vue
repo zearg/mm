@@ -57,8 +57,8 @@
                         <li><a v-on:click.prevent="mmc.toggleDetailsOn(contextMenuFile)" href="#"><i class="fa fa-fw fa-info-circle"></i> Détails</a></li>
                     </ul>
                     <ul v-else>
-                        <li v-if="mmc.isSelected(contextMenuFile)"><a v-on:click.prevent="mmc.unselectFile(contextMenuFile)" href="#"><i class="fa fa-fw fa-times"></i> Déselectionner</a></li>
-                        <li v-else><a v-on:click.prevent="mmc.selectFile(contextMenuFile)" href="#"><i class="fa fa-fw fa-check"></i> Séléctionner</a></li>
+                        <!-- <li v-if="mmc.isSelected(contextMenuFile)"><a v-on:click.prevent="mmc.unselectFile(contextMenuFile)" href="#"><i class="fa fa-fw fa-times"></i> Déselectionner</a></li>
+                        <li v-else><a v-on:click.prevent="mmc.selectFile(contextMenuFile)" href="#"><i class="fa fa-fw fa-check"></i> Séléctionner</a></li> -->
                         <li><a v-on:click.prevent="mmc.toggleDetailsOn(contextMenuFile)" href="#"><i class="fa fa-fw fa-info-circle"></i> Détails</a></li>
                         <li><a v-bind:href="$api.downloadUrl(contextMenuFile)"><i class="fa fa-fw fa-download"></i> Télécharger</a></li>
                         <li><a v-on:click.prevent="mmc.toggleDeleteOn(contextMenuFile)" href="#"><i class="fa fa-fw fa-trash"></i> Supprimer</a></li>
