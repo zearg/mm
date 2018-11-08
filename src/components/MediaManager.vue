@@ -239,6 +239,81 @@ export default {
                 case 'pdf' :
                     str+= 'file-pdf-o';
                     break;
+                case 'zip' :
+                    str+= 'file-archive-o';
+                    break;
+                case 'rar' :
+                    str+= 'file-archive-o';
+                    break;
+                case 'gz' :
+                    str+= 'file-archive-o';
+                    break;
+                case '7z' :
+                    str+= 'file-archive-o';
+                    break;
+                case 'tar' :
+                    str+= 'file-archive-o';
+                    break;
+                case 'mp3' :
+                    str+= 'file-audio-o';
+                    break;
+                case 'wav' :
+                    str+= 'file-audio-o';
+                    break;
+                case 'flac' :
+                    str+= 'file-audio-o';
+                    break;
+                case 'mp4' :
+                    str+= 'file-video-o';
+                    break;
+                case 'mpeg' :
+                    str+= 'file-video-o';
+                    break;
+                case 'avi' :
+                    str+= 'file-video-o';
+                    break;
+                case 'wmv' :
+                    str+= 'file-video-o';
+                    break;
+                case 'ts' :
+                    str+= 'file-video-o';
+                    break;
+                case 'ppt' :
+                    str+= 'file-powerpoint-o';
+                    break;
+                case 'pptx' :
+                    str+= 'file-powerpoint-o';
+                    break;
+                case 'xls' :
+                    str+= 'file-excel-o';
+                    break;
+                case 'xlsx' :
+                    str+= 'file-excel-o';
+                    break;
+                case 'html' :
+                    str+= 'file-code-o';
+                    break;
+                case 'js' :
+                    str+= 'file-code-o';
+                    break;
+                case 'php' :
+                    str+= 'file-code-o';
+                    break;
+                case 'c' :
+                    str+= 'file-code-o';
+                    break;
+                case 'h' :
+                    str+= 'file-code-o';
+                    break;
+                case 'xml' :
+                    str+= 'file-code-o';
+                    break;
+                case 'doc' :
+                    str+= 'file-word-o';
+                    break;
+                case 'docx' :
+                    str+= 'file-word-o';
+                    break;
                 default:
                     str+= 'file-o';
                     break;

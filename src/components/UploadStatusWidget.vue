@@ -3,7 +3,7 @@
     <div class="upload-status-widget panel-modal">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Upload Status
+                Statut du téléchargement
                 <button v-on:click="onClose" type="button" class="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -25,7 +25,7 @@
                                             aria-valuemin="0"
                                             aria-valuemax="100"
                                         >
-                                            <template v-if="upload.success">File has been uploaded.</template>
+                                            <template v-if="upload.success">Le fichier a bien été téléchargé.</template>
                                             <template v-else-if="upload.error">{{ upload.error }}</template>
                                             <template v-else>{{ uploadPercent(upload) }} %</template>
                                         </div>
