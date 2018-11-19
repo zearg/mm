@@ -4,7 +4,12 @@
         <div class="panel panel-default">
 
             <div class="panel-heading">
-                Supprimer le fichier ?
+                <template v-if="file.type!='dir'">
+                    Supprimer le fichier ?
+                </template>
+                <template v-if="file.type=='dir'">
+                    Supprimer le dossier et ses fichiers ?
+                </template>
                 <button v-on:click="onClose" type="button" class="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -40,6 +45,10 @@
                 <p class="buttons">
                     <template v-if="file.type!='dir'">
                         <button v-on:click.prevent="mmc.deleteFile(file)" class="btn btn-primary btn-sm" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Oui</button>
+                        <button v-on:click.prevent="mmc.toggleDeleteOff(file)" class="btn btn-primary btn-sm" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Non</button>
+                    </template>
+                    <template v-if="file.type=='dir'">
+                        <button v-on:click.prevent="mmc.deleteFolder(file)" class="btn btn-primary btn-sm" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Oui</button>
                         <button v-on:click.prevent="mmc.toggleDeleteOff(file)" class="btn btn-primary btn-sm" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Non</button>
                     </template>
                 </p>

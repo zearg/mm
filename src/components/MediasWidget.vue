@@ -65,6 +65,7 @@
                     <ul v-if="contextMenuFile.type=='dir'">
                         <li><a v-on:click.prevent="onMediaClick(contextMenuFile)" href="#"><i class="fa fa-fw fa-folder-open"></i> Ouvrir</a></li>
                         <li><a v-on:click.prevent="mmc.toggleDetailsOn(contextMenuFile)" href="#"><i class="fa fa-fw fa-info-circle"></i> Détails</a></li>
+                        <li><a v-on:click.prevent="mmc.toggleDeleteOn(contextMenuFile)" href="#"><i class="fa fa-fw fa-trash"></i> Supprimer</a></li>
                     </ul>
                     <ul v-else>
                         <!-- <li v-if="mmc.isSelected(contextMenuFile)"><a v-on:click.prevent="mmc.unselectFile(contextMenuFile)" href="#"><i class="fa fa-fw fa-times"></i> Déselectionner</a></li>

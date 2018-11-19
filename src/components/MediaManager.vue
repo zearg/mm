@@ -192,8 +192,8 @@ export default {
                 throw error;
             });
         },
-        deleteFolder(path) {
-            this.$api.deleteFolder(path)
+        deleteFolder(file) {
+            this.$api.deleteFolder(file.path)
             .then(response => {
                 this.onFolderDeletedSuccess()
             })
