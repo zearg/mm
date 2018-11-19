@@ -9,6 +9,8 @@ export default class Api {
             downloadUrl: null,
             deleteUrl: null,
             uploadUrl: null,
+            createFolderUrl: null,
+            deleteFolderUrl: null,
             axiosOptions: {}
         };
     }
@@ -24,7 +26,7 @@ export default class Api {
     }
 
     list(path) {
-        return this.axios.get(this.options.listUrl, { params: { path: this.path } });
+        return this.axios.get(this.options.listUrl, { params: { path: path } });
     }
 
     upload(data, config) {
@@ -39,6 +41,14 @@ export default class Api {
         // TODO : proper
         if (this.options.downloadUrl)
             return this.options.downloadUrl+'?path='+file.path;
+    }
+
+    createFolder(path) {
+        return this.axios.get(this.options.createFolderUrl, { params: { path: path } });
+    }
+
+    deleteFolder(path) {
+        return this.axios.get(this.options.deleteFolderUrl, { params: { path: path } });
     }
 
 }

@@ -48,6 +48,16 @@
                     ></media-widget>
 
                 </template>
+                <div class="clear">
+                    <div v-on:click="onNewFolderClick(path)" class="folder animated fadeIn">
+                        <div class="file-preview">
+                            <div class="icon">
+                                <i class="fa fa-folder"></i>
+                            </div>
+                        </div>
+                        + Nouveau dossier
+                    </div>
+                </div>
             </div>
 
             <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
@@ -125,7 +135,7 @@ export default {
             this.loading = true;
             this.error = false;
 
-            this.$api.list(this.path)
+            this.$api.list(this.mmc.path)
                 .then(response => {
                     if (Array.isArray(response.data)) {
                         response.data.sort((a, b) => {
@@ -146,9 +156,14 @@ export default {
         browse(path) {
             this.mmc.path = path;
         },
-
+        onNewFolderClick(path) {
+            var name = window.prompt("Nom du nouveau dossier","Nouveau dossier");
+            if(name != null && name != ''){
+                this.mmc.createFolder(path+'/'+name)
+            }
+        },
         onMediaClick(file) {
-            if (file.type=='dir') {
+            if (file.type == 'dir') {
                 this.browse(file.path);
             } else {
                 let mmc = this.mmc;
@@ -192,6 +207,9 @@ $filesMargin: 5px;
     margin: (-$filesMargin) (-$filesMargin) 15px (-$filesMargin);
     .file {
         margin: $filesMargin;
+    }
+    .folder {
+        text-align:center;
     }
 }
 

@@ -159,6 +159,12 @@ export default {
             this.showDetails = false;
             this.file = {};
         },
+        onFolderCreatedSuccess() {
+            this.$refs.medias.refresh();
+        },
+        onFolderDeletedSuccess() {
+            this.$refs.medias.refresh();
+        },
 
         deleteFile(file){
             this.$api.deleteUrl(file)
@@ -175,7 +181,29 @@ export default {
             // if(this.$api.deleteUrl(file) === true){
             // }
         },
+        createFolder(path) {
+            this.$api.createFolder(path)
+            .then(response => {
+                this.onFolderCreatedSuccess()
+            })
+            .catch(function (error) {
+                // handle error first
 
+                throw error;
+            });
+        },
+        deleteFolder(path) {
+            this.$api.deleteFolder(path)
+            .then(response => {
+                this.onFolderDeletedSuccess()
+            })
+            .catch(function (error) {
+                // handle error first
+
+                throw error;
+            });
+
+        },
         selectFile(file) {
             this.$store.commit('addSelected', file);
         },
