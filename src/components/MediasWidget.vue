@@ -211,6 +211,10 @@ $filesMargin: 5px;
     }
     .folder {
         text-align:center;
+        display: block;
+        margin: 0 auto;
+        max-width: 160px;
+        cursor: pointer;
     }
 }
 

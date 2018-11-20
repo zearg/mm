@@ -163,6 +163,8 @@ export default {
             this.$refs.medias.refresh();
         },
         onFolderDeletedSuccess() {
+            this.toggleDetailsOff();
+            this.toggleDeleteOff();
             this.$refs.medias.refresh();
         },
 
